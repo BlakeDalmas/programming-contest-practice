@@ -1,3 +1,6 @@
 .git
 .idea
-programming-contest-practice.iml
+*.iws
+*.iml
+*.ipr
+*.class
