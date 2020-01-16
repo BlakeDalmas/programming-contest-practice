@@ -18,19 +18,26 @@ class threeNPlusOne {
     // If n is even, divide by 2.
     // If n is odd, multiply by 3 and add 1.
     static int oddEvenAdd(int n) {
-        if (n % 2 == 0) return (int)(n / 2);
+        if (n % 2 == 0) return n / 2;
         return (n * 3) + 1;
     }
 
     void begin() {
         Scanner scan = new Scanner(System.in);
 
-        while (scan.hasNextLine()) {
+        while (scan.hasNextInt()) {
             int i = scan.nextInt(); // lower range
             int j = scan.nextInt(); // upper range
             int maximumCycleLength = -1; // max cycles (result)
+            int lower = i;
+            int upper = j;
 
-            for (int n = i; n <= j; n++) {
+            if (i >= j) {
+                lower = j;
+                upper = i;
+            }
+
+            for (int n = lower; n <= upper; n++) {
                 int currentN = n; // Changing n would mess up the loop so this is copied.
                 int currentCycleLength = 1; // Current cycles. (Assumes original n counts so starts at 1.)
 
@@ -48,5 +55,7 @@ class threeNPlusOne {
 
             System.out.println(i + " " + j + " " + maximumCycleLength);
         }
+
+        System.out.println();
     }
 }
